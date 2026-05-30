@@ -97,7 +97,9 @@
   .proj-name{font-weight:600;font-size:15px;color:var(--ink)}
   .proj-role{font-size:12px;color:var(--muted)}
   .proj-period{font-size:12px;color:var(--muted);margin-top:2px}
-  .proj-desc{font-size:13.5px;color:var(--soft);margin:9px 0 11px;flex:1}
+  .proj-points{list-style:none;margin:10px 0 12px;flex:1;display:flex;flex-direction:column;gap:5px}
+  .proj-points li{position:relative;padding-left:15px;font-size:13.5px;color:var(--soft);line-height:1.65}
+  .proj-points li::before{content:"–";position:absolute;left:0;color:var(--muted)}
   .proj-tags{display:flex;flex-wrap:wrap;gap:6px}
   .proj-tags .t{font-size:11.5px;color:var(--tag-ink);background:var(--tag-bg);border:1px solid var(--line);padding:1px 8px;border-radius:5px}
   .proj-win{font-size:12.5px;color:var(--soft);margin-top:10px;padding-top:9px;border-top:1px solid var(--line-soft)}
@@ -364,68 +366,159 @@
     {
       name:{en:"Bomberman-style Game",tw:"轟炸超人",cn:"轰炸超人"}, role:{en:"Game Developer",tw:"Game Developer",cn:"Game Developer"},
       period:{en:"Jan 2023 – Present",tw:"2023.01 ~ 至今",cn:"2023.01 ~ 至今"},
-      desc:{en:"Owned tech selection and core R&D: game logic, <b>frame-sync</b> netcode, performance & latency optimization, packet optimization; in-house map/action editors and Excel + AssetBundle build tools; URP scene effects with three-platform packaging.",
-            tw:"負責技術選型與核心研發：開發遊戲邏輯、<b>幀同步</b>技術、效能與網絡延遲優化、封包優化；自製地圖編輯器、動作編輯器、Excel 與 AssetBundle 打包工具；URP 場景效果，三端打包。",
-            cn:"负责技术选型与核心研发：开发游戏逻辑、<b>帧同步</b>技术、性能与网络延迟优化、封包优化；自制地图编辑器、动作编辑器、Excel 与 AssetBundle 打包工具；URP 场景效果，三端打包。"},
+      points:[
+        {en:"Owned project tech selection: Unity 2021 client, C# back-end, PHP admin; ILRuntime for hot-update.",
+         tw:"負責專案技術選型：Unity 2021 前端、C# 後端、PHP 後台；採用 ILRuntime 熱更新。",
+         cn:"负责项目技术选型：Unity 2021 前端、C# 后端、PHP 后台；采用 ILRuntime 热更新。"},
+        {en:"Developed game logic and <b>frame-sync</b> netcode; solved performance & latency issues and optimized packet size.",
+         tw:"開發遊戲邏輯與<b>幀同步</b>技術；解決效能與網絡延遲問題，優化封包大小。",
+         cn:"开发游戏逻辑与<b>帧同步</b>技术；解决性能与网络延迟问题，优化封包大小。"},
+        {en:"Built in-house map editor, action editor, plus Excel and AssetBundle packaging tools.",
+         tw:"自製地圖編輯器、動作編輯器，以及 Excel 與 AssetBundle 打包工具。",
+         cn:"自制地图编辑器、动作编辑器，以及 Excel 与 AssetBundle 打包工具。"},
+        {en:"Applied URP for sprite effects and lighting; handled three-platform packaging (PC/Android/iOS).",
+         tw:"運用 URP 製作 Sprite 效果與燈光；負責三端打包（PC/Android/iOS）。",
+         cn:"运用 URP 制作 Sprite 效果与灯光；负责三端打包（PC/Android/iOS）。"},
+      ],
       tags:["Unity 2021","C#","PHP","ILRuntime","URP","PC/Android/iOS"]
     },
     {
       name:{en:"RummyGo",tw:"RummyGo",cn:"RummyGo"}, role:{en:"Lead Programmer",tw:"項目主程",cn:"项目主程"},
       period:{en:"Oct 2020 – Present",tw:"2020.10 ~ 至今",cn:"2020.10 ~ 至今"},
-      desc:{en:"A card game combining Rummy / Poker / Patti, targeting <b>overseas markets</b>. Owned overall architecture, copywriting and numeric design, plus overseas marketing and dual-store submission.",
-            tw:"結合 Rummy / Poker / Patti 三種玩法、面向<b>海外市場</b>的棋牌遊戲。負責整體架構、文案與數值設計，並主導海外推廣與雙平台送審上架。",
-            cn:"结合 Rummy / Poker / Patti 三种玩法、面向<b>海外市场</b>的棋牌游戏。负责整体架构、文案与数值设计，并主导海外推广与双平台送审上架。"},
+      points:[
+        {en:"A card game combining Rummy / Poker / Patti, targeting <b>overseas markets</b>.",
+         tw:"結合 Rummy / Poker / Patti 三種玩法、面向<b>海外市場</b>的棋牌遊戲。",
+         cn:"结合 Rummy / Poker / Patti 三种玩法、面向<b>海外市场</b>的棋牌游戏。"},
+        {en:"Unity 2020 client, Node.js server and PHP admin system.",
+         tw:"Unity 2020 客戶端、Node.js 服務端與 PHP 後台系統。",
+         cn:"Unity 2020 客户端、Node.js 服务端与 PHP 后台系统。"},
+        {en:"Owned overall architecture, copywriting and numeric design.",
+         tw:"負責遊戲整體架構、文案與數值設計。",
+         cn:"负责游戏整体架构、文案与数值设计。"},
+        {en:"Drove overseas marketing (FB / IG / GP) and dual-store submission & release.",
+         tw:"主導海外市場推廣（FB / IG / GP）與雙平台送審上架。",
+         cn:"主导海外市场推广（FB / IG / GP）与双平台送审上架。"},
+      ],
       tags:["Unity 2020","Node.js","PHP",{en:"Going global",tw:"出海",cn:"出海"},"GP / App Store"],
       win:{en:"Live on Google Play; Apple Store in review",tw:"Google Play 已上架，Apple Store 送審中",cn:"Google Play 已上架，Apple Store 送审中"}
     },
     {
       name:{en:"Daxiong Suzhou Mahjong",tw:"大熊蘇州麻將",cn:"大熊苏州麻将"}, role:{en:"Technical Manager",tw:"技術經理",cn:"技术经理"},
       period:{en:"Oct 2016 – Aug 2024",tw:"2016.10 ~ 2024.08",cn:"2016.10 ~ 2024.08"},
-      desc:{en:"Independently built a teahouse management system and mahjong client: Cocos Creator client, Laravel / ThinkPHP3 back-office, VC11 server; in-house DDoS protection and gold-room bot win/loss tuning.",
-            tw:"獨立開發茶館管理系統與麻將客戶端：Cocos Creator 客戶端、Laravel / ThinkPHP3 後台、VC11 服務端；自研 DDOS 防護與金幣場機器人輸贏水位設計。",
-            cn:"独立开发茶馆管理系统与麻将客户端：Cocos Creator 客户端、Laravel / ThinkPHP3 后台、VC11 服务端；自研 DDOS 防护与金币场机器人输赢水位设计。"},
+      points:[
+        {en:"Developed a teahouse management system based on market demand.",
+         tw:"根據市場需求開發出自有的茶館管理系統。",
+         cn:"根据市场需求开发出自有的茶馆管理系统。"},
+        {en:"Independently built the mahjong client with Cocos Creator.",
+         tw:"使用 Cocos Creator 獨立開發麻將客戶端。",
+         cn:"使用 Cocos Creator 独立开发麻将客户端。"},
+        {en:"Built the admin back-office with Laravel / ThinkPHP3 and the game server with VC11.",
+         tw:"使用 Laravel / ThinkPHP3 開發後台系統，並以 VC11 開發遊戲服務端。",
+         cn:"使用 Laravel / ThinkPHP3 开发后台系统，并以 VC11 开发游戏服务端。"},
+        {en:"Handled iOS / Android submission & release, plus server operations and backups.",
+         tw:"負責 iOS / Android 送審上架，及伺服器運行與備份管理。",
+         cn:"负责 iOS / Android 送审上架，及服务器运行与备份管理。"},
+        {en:"Designed an in-house DDoS protection system and gold-room bot win/loss tuning.",
+         tw:"自研 DDOS 防護系統，並設計金幣場機器人輸贏水位。",
+         cn:"自研 DDOS 防护系统，并设计金币场机器人输赢水位。"},
+      ],
       tags:["Cocos Creator","Laravel","ThinkPHP3","C++"],
       win:{en:"Launched in 2 months; up to 1,000 concurrent players; first local teahouse system in Suzhou",tw:"2 個月內上線，同時在線達千人；蘇州本地首家茶館系統",cn:"2 个月内上线，同时在线达千人；苏州本地首家茶馆系统"}
     },
     {
       name:{en:"Hundou Sanguo (ARPG)",tw:"魂斗三國",cn:"魂斗三国"}, role:{en:"Lead Programmer",tw:"主程序",cn:"主程序"},
       period:{en:"Jun 2014 – Nov 2015",tw:"2014.06 ~ 2015.11",cn:"2014.06 ~ 2015.11"},
-      desc:{en:"A mobile ARPG (comparable to Taichi Panda). Handled Android hot-update and iOS resource updates; built scene switching, resource management, monster spawning, AI modes, combat and dungeon systems with multiple third-party SDKs.",
-            tw:"ARPG 手遊（性質近似太極熊貓）。處理 Android 熱更新與 iOS 資源更新；完成場景切換、資源管理、怪物生成、AI 模式、戰鬥動作與副本系統，整合多種第三方 SDK。",
-            cn:"ARPG 手游（性质近似太极熊猫）。处理 Android 热更新与 iOS 资源更新；完成场景切换、资源管理、怪物生成、AI 模式、战斗动作与副本系统，整合多种第三方 SDK。"},
+      points:[
+        {en:"A mobile ARPG, comparable to Taichi Panda of its time.",
+         tw:"ARPG 手遊，性質近似當時的太極熊貓。",
+         cn:"ARPG 手游，性质近似当时的太极熊猫。"},
+        {en:"Handled Android hot-update and iOS resource-update mechanisms.",
+         tw:"處理 Android 熱更新機制與 iOS 資源更新方案。",
+         cn:"处理 Android 热更新机制与 iOS 资源更新方案。"},
+        {en:"Built scene switching, resource management, monster spawning, AI modes, combat playback and dungeon / bag / upgrade systems.",
+         tw:"完成場景切換、資源釋放管理、怪物生成、AI 模式、戰鬥動作播放，及副本 / 包裹 / 強化等系統。",
+         cn:"完成场景切换、资源释放管理、怪物生成、AI 模式、战斗动作播放，及副本 / 包裹 / 强化等系统。"},
+        {en:"Integrated third-party SDKs (CrashReport, Fmod, Talking Data, VTC SDK) and built an iOS auto-build tool.",
+         tw:"整合第三方 SDK（CrashReport、Fmod、Talking Data、VTC SDK），並開發 iOS 自動化打包工具。",
+         cn:"整合第三方 SDK（CrashReport、Fmod、Talking Data、VTC SDK），并开发 iOS 自动化打包工具。"},
+      ],
       tags:["Unity3D",{en:"Hot-update",tw:"熱更新",cn:"热更新"},"Fmod","Talking Data","VTC SDK"]
     },
     {
       name:{en:"Legend of Camelot",tw:"卡米洛傳說",cn:"卡米洛传说"}, role:{en:"Lead Programmer",tw:"主程式",cn:"主程式"},
       period:{en:"Apr 2013 – May 2014",tw:"2013.04 ~ 2014.05",cn:"2013.04 ~ 2014.05"},
-      desc:{en:"Porting of the web game “Cute Knights” to handheld devices. Built IAP in-app payment, on-demand texture download, AssetBundle load/release, WebView, obfuscation and automated packaging.",
-            tw:"網頁遊戲「萌騎士」移植手持裝置專案。開發 IAP 應用內金流、貼圖即時下載、AssetBundle 資源載入 / 釋放機制、WebView、加密混淆與自動化打包。",
-            cn:"网页游戏「萌骑士」移植手持装置项目。开发 IAP 应用内金流、贴图即时下载、AssetBundle 资源加载 / 释放机制、WebView、加密混淆与自动化打包。"},
+      points:[
+        {en:"Ported the web game “Cute Knights” to handheld devices using Unity3D.",
+         tw:"將網頁遊戲「萌騎士」以 Unity3D 移植至手持裝置。",
+         cn:"将网页游戏「萌骑士」以 Unity3D 移植至手持设备。"},
+        {en:"Built IAP in-app payment flow and on-demand texture download / display.",
+         tw:"開發 IAP 應用內結算金流，以及貼圖即時下載顯示流程。",
+         cn:"开发 IAP 应用内结算金流，以及贴图即时下载显示流程。"},
+        {en:"Designed AssetBundle resource load / release mechanisms and WebView functionality.",
+         tw:"設計 AssetBundle 資源載入 / 釋放機制與 WebView 功能。",
+         cn:"设计 AssetBundle 资源加载 / 释放机制与 WebView 功能。"},
+        {en:"Applied obfuscation, automated packaging, and set up test / resource-update servers.",
+         tw:"套用加密混淆與自動化打包，並搭建測試 / 資源更新伺服器。",
+         cn:"套用加密混淆与自动化打包，并搭建测试 / 资源更新服务器。"},
+      ],
       tags:["Unity3D","NGUI","IAP","AssetBundle"]
     },
     {
       name:{en:"Kingdom Knights",tw:"王國騎士團",cn:"王国骑士团"}, role:{en:"Lead Programmer",tw:"主程序",cn:"主程序"},
       period:{en:"Sep 2011 – Apr 2013",tw:"2011.09 ~ 2013.04",cn:"2011.09 ~ 2013.04"},
-      desc:{en:"The company’s <b>first Unity3D</b> project, a Facebook web game. Broke from traditional 2.5D scenes to a spherical map with hex-grid layout for strategy management gameplay; built an Excel→ScriptableObject pipeline and NGUI dependency packaging.",
-            tw:"公司內<b>第一款 Unity3D</b> 專案、發佈於 FB 的頁遊。突破傳統 2.5D 場景，改用球體場景與六方格佈局的策略經營玩法；自研 Excel→ScriptableObject 轉換流程與 NGUI 依賴打包。",
-            cn:"公司内<b>第一款 Unity3D</b> 项目、发布于 FB 的页游。突破传统 2.5D 场景，改用球体场景与六方格布局的策略经营玩法；自研 Excel→ScriptableObject 转换流程与 NGUI 依赖打包。"},
+      points:[
+        {en:"The company’s <b>first Unity3D</b> project — a Facebook web game.",
+         tw:"公司內<b>第一款 Unity3D</b> 專案，發佈於 FB 的頁遊。",
+         cn:"公司内<b>第一款 Unity3D</b> 项目，发布于 FB 的页游。"},
+        {en:"Broke from traditional 2.5D scenes to a spherical map with hex-grid layout for strategy gameplay.",
+         tw:"突破傳統 2.5D 場景，改用球體場景與六方格佈局的策略經營玩法。",
+         cn:"突破传统 2.5D 场景，改用球体场景与六方格布局的策略经营玩法。"},
+        {en:"Built an Excel→ScriptableObject conversion pipeline for design data import.",
+         tw:"開發企劃資料轉換制程，從 Excel 直接匯入成 ScriptableObject。",
+         cn:"开发企划资料转换流程，从 Excel 直接导入成 ScriptableObject。"},
+        {en:"Mastered NGUI UI systems with dependency packaging and Atlas splitting; built FB avatar display and an HTTP cache system.",
+         tw:"熟練 NGUI 介面系統，含依賴打包與 Atlas 拆分；開發 FB 頭像顯示與 HTTP 緩存系統。",
+         cn:"熟练 NGUI 界面系统，含依赖打包与 Atlas 拆分；开发 FB 头像显示与 HTTP 缓存系统。"},
+      ],
       tags:["Unity3D","NGUI","Facebook","ScriptableObject"]
     },
     {
       name:{en:"Mengu Empire",tw:"萌谷帝國",cn:"萌谷帝国"}, role:{en:"Game Programmer",tw:"遊戲程序",cn:"游戏程序"},
       period:{en:"Jan 2010 – Sep 2011",tw:"2010.01 ~ 2011.09",cn:"2010.01 ~ 2011.09"},
-      desc:{en:"A remake extending Fire Phoenix Three Kingdoms with a guild-focused system. Reduced draw calls via dynamic texture merging; built skill-CD shaders and minimap mipmaps to optimize client UI performance.",
-            tw:"火鳳三國再製品，重點延伸工會系統。使用動態合併貼圖減少 draw call，開發技能 CD Shader 與小地圖 mipmap，優化客戶端介面效能。",
-            cn:"火凤三国再制品，重点延伸工会系统。使用动态合并贴图减少 draw call，开发技能 CD Shader 与小地图 mipmap，优化客户端界面性能。"},
+      points:[
+        {en:"A remake extending Fire Phoenix Three Kingdoms, focused on the guild system.",
+         tw:"火鳳三國再製品，重點延伸工會系統。",
+         cn:"火凤三国再制品，重点延伸工会系统。"},
+        {en:"Built the game client on the BigWorld engine.",
+         tw:"使用 BigWorld 開發遊戲客戶端。",
+         cn:"使用 BigWorld 开发游戏客户端。"},
+        {en:"Reduced draw calls via dynamic texture merging; used sliced sprites and tiled mini-game maps.",
+         tw:"使用動態合併貼圖減少 draw call；運用 sliced sprite 與 tiled 製作小遊戲地圖。",
+         cn:"使用动态合并贴图减少 draw call；运用 sliced sprite 与 tiled 制作小游戏地图。"},
+        {en:"Developed skill-CD shaders and minimap mipmap to optimize client UI performance.",
+         tw:"開發技能 CD Shader 與小地圖 mipmap，優化客戶端介面效能。",
+         cn:"开发技能 CD Shader 与小地图 mipmap，优化客户端界面性能。"},
+      ],
       tags:["BigWorld","Shader",{en:"Perf optimization",tw:"效能優化",cn:"性能优化"}],
       win:{en:"Reached tens-of-millions profit in its first year",tw:"上線一年利潤達千萬級別",cn:"上线一年利润达千万级别"}
     },
     {
       name:{en:"Fire Phoenix Three Kingdoms Online",tw:"火鳳三國 Online",cn:"火凤三国 Online"}, role:{en:"Game Programmer",tw:"遊戲程序",cn:"游戏程序"},
       period:{en:"Oct 2008 – Jan 2010",tw:"2008.10 ~ 2010.01",cn:"2008.10 ~ 2010.01"},
-      desc:{en:"The division’s first <b>BigWorld MMORPG client/PC game</b>, featuring on-the-fly transformation combat across the world map — the first 3D transformation MMORPG of its time. Built UI programming and many interface systems, using batching rendering to boost performance.",
-            tw:"宇峻奧汀第三事業處第一款 <b>BigWorld MMORPG 端遊</b>，主打世界地圖隨時變身戰鬥，為當時首款 3D 變身 MMORPG。負責介面程式與多項界面系統，並以 batching rendering 提升效能。",
-            cn:"宇峻奥汀第三事业处第一款 <b>BigWorld MMORPG 端游</b>，主打世界地图随时变身战斗，为当时首款 3D 变身 MMORPG。负责界面程序与多项界面系统，并以 batching rendering 提升性能。"},
+      points:[
+        {en:"The division’s first <b>BigWorld MMORPG client/PC game</b>, and the first 3D transformation MMORPG of its time.",
+         tw:"事業處第一款 <b>BigWorld MMORPG 端遊</b>，亦為當時首款 3D 變身 MMORPG。",
+         cn:"事业处第一款 <b>BigWorld MMORPG 端游</b>，亦为当时首款 3D 变身 MMORPG。"},
+        {en:"Developed the UI programming, aligning features with planning and art teams.",
+         tw:"負責開發介面程式，與企劃、美術溝通確認功能並實作。",
+         cn:"负责开发界面程序，与企划、美术沟通确认功能并实作。"},
+        {en:"Boosted UI performance with batching rendering.",
+         tw:"以 batching rendering 提升介面效能。",
+         cn:"以 batching rendering 提升界面性能。"},
+        {en:"Built bag, character, skill, guild and upgrade interface systems per design requirements.",
+         tw:"依策劃需求開發背包、人物、技能、公會、強化等界面系統。",
+         cn:"依策划需求开发背包、人物、技能、公会、强化等界面系统。"},
+      ],
       tags:["BigWorld","C++","MMORPG"],
       win:{en:"Reached tens-of-millions profit ~3 months after launch",tw:"上線約 3 個月利潤達千萬級別",cn:"上线约 3 个月利润达千万级别"}
     },
@@ -468,7 +561,7 @@
           <span class="proj-role">${L(p.role)}</span>
         </div>
         <div class="proj-period">${L(p.period)}</div>
-        <div class="proj-desc">${L(p.desc)}</div>
+        <ul class="proj-points">${p.points.map(pt=>`<li>${L(pt)}</li>`).join("")}</ul>
         <div class="proj-tags">${p.tags.map(t=>`<span class="t">${L(t)}</span>`).join("")}</div>
         ${p.win?`<div class="proj-win">${L(p.win)}</div>`:""}
       </div>`).join("");
