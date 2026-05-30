@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chong Ming Chen 陳崇銘 — 資深遊戲開發 / 技術主管 (Unity3D)</title>
+<meta name="description" content="陳崇銘 Chong Ming Chen — 18 年遊戲開發與技術領導經驗，專精 Unity3D / Cocos Creator 客戶端與 PHP / Node.js 後端全棧開發，深度實踐 AI 輔助研發工作流。">
+<style>
+  :root{
+    --bg:#f5f5f4;
+    --card:#ffffff;
+    --line:#e7e5e4;
+    --line-soft:#f0efed;
+    --ink:#1c1917;
+    --text:#44403c;
+    --soft:#57534e;
+    --muted:#a8a29e;
+    --accent:#3f6212;        /* restrained single accent, used sparingly */
+    --accent:#334155;
+    --link:#2563eb;
+    --tag-bg:#f5f5f4;
+    --tag-ink:#52525b;
+    --radius:10px;
+    --maxw:880px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Segoe UI","PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,-apple-system,sans-serif;
+    color:var(--text);line-height:1.75;background:var(--bg);
+    -webkit-font-smoothing:antialiased;font-size:15px;
+    padding:0 16px 64px;
+  }
+
+  .toolbar{max-width:var(--maxw);margin:0 auto;display:flex;justify-content:flex-end;gap:8px;padding:18px 2px;flex-wrap:wrap}
+  .btn{cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--soft);
+    padding:6px 13px;border-radius:7px;font-size:13.5px;font-weight:500;
+    transition:.15s;display:inline-flex;align-items:center;gap:6px}
+  .btn:hover{border-color:var(--muted);color:var(--ink)}
+  .lang-group{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--card)}
+  .lang-group .btn{border:none;border-radius:0;border-right:1px solid var(--line)}
+  .lang-group .btn:last-child{border-right:none}
+  .lang-group .btn.active{background:var(--ink);color:#fff}
+
+  .resume{max-width:var(--maxw);margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+
+  /* header */
+  header.hero{padding:40px 44px 30px;border-bottom:1px solid var(--line)}
+  .hero-top{display:flex;gap:24px;align-items:center}
+  .avatar{width:84px;height:84px;border-radius:50%;flex:none;display:grid;place-items:center;
+    background:var(--bg);border:1px solid var(--line);color:var(--soft);
+    font-size:28px;font-weight:600;letter-spacing:1px}
+  .hero h1{font-size:30px;font-weight:600;letter-spacing:.3px;color:var(--ink);line-height:1.2}
+  .hero h1 .zh{font-size:21px;font-weight:500;color:var(--soft);margin-left:8px}
+  .hero .role{font-size:15.5px;color:var(--soft);margin-top:5px}
+  .meta-chips{margin-top:14px;display:flex;flex-wrap:wrap;gap:7px}
+  .chip{border:1px solid var(--line);color:var(--soft);font-size:12.5px;padding:2px 10px;border-radius:5px}
+  .contact{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px}
+  .contact a,.contact span{color:var(--soft);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+  .contact a:hover{color:var(--link)}
+  .ico{width:15px;height:15px;flex:none;color:var(--muted)}
+
+  .content{padding:34px 44px 42px}
+  section{margin-bottom:34px}
+  section:last-child{margin-bottom:0}
+  h2{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;
+    padding-bottom:9px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+
+  .intro{display:flex;flex-direction:column;gap:7px}
+  .intro li{list-style:none;position:relative;padding-left:18px;color:var(--text)}
+  .intro li::before{content:"–";position:absolute;left:0;color:var(--muted)}
+  .intro li.ai{padding-left:18px;border-left:2px solid var(--line);margin-left:-2px}
+
+  .skills{display:grid;gap:2px}
+  .skill-row{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:start;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+  .skill-row:last-child{border-bottom:none}
+  .skill-cat{font-weight:500;color:var(--ink);font-size:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px}
+  .tag{background:var(--tag-bg);border:1px solid var(--line);color:var(--tag-ink);font-size:12.5px;
+    padding:2px 10px;border-radius:5px;white-space:nowrap}
+
+  .timeline{display:flex;flex-direction:column;gap:24px}
+  .job{position:relative;padding-left:20px;border-left:1px solid var(--line)}
+  .job::before{content:"";position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;
+    background:var(--muted)}
+  .job-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px}
+  .job-title{font-size:15.5px;font-weight:600;color:var(--ink)}
+  .job-period{font-size:12.5px;color:var(--muted)}
+  .job-company{color:var(--soft);font-size:13.5px;margin:1px 0 10px}
+  .job ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+  .job li{position:relative;padding-left:16px;color:var(--text);font-size:14px}
+  .job li::before{content:"–";position:absolute;left:0;color:var(--muted)}
+
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .proj{background:var(--card);padding:16px 18px;display:flex;flex-direction:column}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .proj-name{font-weight:600;font-size:15px;color:var(--ink)}
+  .proj-role{font-size:12px;color:var(--muted)}
+  .proj-period{font-size:12px;color:var(--muted);margin-top:2px}
+  .proj-desc{font-size:13.5px;color:var(--soft);margin:9px 0 11px;flex:1}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .proj-tags .t{font-size:11.5px;color:var(--tag-ink);background:var(--tag-bg);border:1px solid var(--line);padding:1px 8px;border-radius:5px}
+  .proj-win{font-size:12.5px;color:var(--soft);margin-top:10px;padding-top:9px;border-top:1px solid var(--line-soft)}
+
+  .edu-list{display:flex;flex-direction:column}
+  .edu{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .edu:last-child{border-bottom:none}
+  .edu .school{font-weight:500;font-size:14.5px;color:var(--ink)}
+  .edu .major{color:var(--soft);font-size:13.5px;margin-left:10px}
+  .edu .deg{font-size:12px;color:var(--muted);margin-left:8px}
+  .edu .yr{font-size:13px;color:var(--muted)}
+
+  footer.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:24px 20px 4px}
+
+  /* gentle emphasis — no color, lighter weight */
+  b,strong{font-weight:600;color:var(--ink)}
+
+  @media (max-width:680px){
+    .hero-top{flex-direction:column;text-align:center;gap:14px}
+    .meta-chips,.contact{justify-content:center}
+    .hero h1{font-size:26px}
+    header.hero{padding:32px 22px 26px}
+    .content{padding:28px 20px 34px}
+    .skill-row{grid-template-columns:1fr;gap:6px}
+    .projects{grid-template-columns:1fr}
+  }
+  @media print{
+    body{background:#fff;padding:0;font-size:12pt}
+    .toolbar{display:none}
+    .resume{border:none;border-radius:0;max-width:100%}
+    section,.job,.proj{page-break-inside:avoid}
+  }
+
+  [data-lang]{display:none}
+  html[lang="en"] [data-lang="en"]{display:revert}
+  html[lang="zh-Hant"] [data-lang="tw"]{display:revert}
+  html[lang="zh-Hans"] [data-lang="cn"]{display:revert}
+  html[lang="en"] .contact[data-lang="en"],
+  html[lang="zh-Hant"] .contact[data-lang="tw"],
+  html[lang="zh-Hans"] .contact[data-lang="cn"]{display:flex}
+</style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="lang-group" role="group" aria-label="language">
+      <button class="btn" id="btn-en" onclick="setLang('en')">English</button>
+      <button class="btn" id="btn-tw" onclick="setLang('zh-Hant')">繁體中文</button>
+      <button class="btn" id="btn-cn" onclick="setLang('zh-Hans')">简体中文</button>
+    </div>
+    <button class="btn" onclick="window.print()">
+      <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+      <span data-lang="en">Print / PDF</span><span data-lang="tw">列印 / PDF</span><span data-lang="cn">打印 / PDF</span>
+    </button>
+  </div>
+
+  <main class="resume">
+    <header class="hero">
+      <div class="hero-top">
+        <div class="avatar">CM</div>
+        <div>
+          <h1>Chong Ming Chen<span class="zh" data-lang="tw">陳崇銘</span><span class="zh" data-lang="cn">陈崇铭</span></h1>
+          <div class="role">
+            <span data-lang="en">Senior Game Developer / Tech Lead · Unity3D</span>
+            <span data-lang="tw">資深遊戲開發工程師 / 技術主管 · Unity3D</span>
+            <span data-lang="cn">资深游戏开发工程师 / 技术主管 · Unity3D</span>
+          </div>
+          <div class="meta-chips">
+            <span class="chip" data-lang="en">Male · 43</span><span class="chip" data-lang="tw">男 · 43 歲</span><span class="chip" data-lang="cn">男 · 43 岁</span>
+            <span class="chip" data-lang="en">18 yrs experience</span><span class="chip" data-lang="tw">18 年工作經驗</span><span class="chip" data-lang="cn">18 年工作经验</span>
+            <span class="chip" data-lang="en">Target: U3D</span><span class="chip" data-lang="tw">求職方向：U3D</span><span class="chip" data-lang="cn">求职方向：U3D</span>
+            <span class="chip" data-lang="en">Location: Taiwan</span><span class="chip" data-lang="tw">期望地點：台灣</span><span class="chip" data-lang="cn">期望地点：台湾</span>
+            <span class="chip" data-lang="en">Salary: 30–50K</span><span class="chip" data-lang="tw">期望薪資：30–50K</span><span class="chip" data-lang="cn">期望薪资：30–50K</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact">
+        <a href="tel:+8615618176707">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          156-1817-6707
+        </a>
+        <span>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-lang="en">Taichung, Taiwan</span><span data-lang="tw">臺中市・台灣</span><span data-lang="cn">台中市・台湾</span>
+        </span>
+        <a href="https://gamstarsport.blogspot.com/" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          gamstarsport.blogspot.com
+        </a>
+        <a href="http://novel.urscos.com/" target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          novel.urscos.com
+        </a>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <section>
+        <h2><span data-lang="en">Profile</span><span data-lang="tw">個人優勢</span><span data-lang="cn">个人优势</span></h2>
+        <ul class="intro" id="intro"></ul>
+      </section>
+
+      <section>
+        <h2><span data-lang="en">Technical Skills</span><span data-lang="tw">技術技能</span><span data-lang="cn">技术技能</span></h2>
+        <div class="skills" id="skills"></div>
+      </section>
+
+      <section>
+        <h2><span data-lang="en">Work Experience</span><span data-lang="tw">工作經歷</span><span data-lang="cn">工作经历</span></h2>
+        <div class="timeline" id="experience"></div>
+      </section>
+
+      <section>
+        <h2><span data-lang="en">Selected Projects</span><span data-lang="tw">代表專案</span><span data-lang="cn">代表项目</span></h2>
+        <div class="projects" id="projects"></div>
+      </section>
+
+      <section>
+        <h2><span data-lang="en">Education</span><span data-lang="tw">學歷</span><span data-lang="cn">学历</span></h2>
+        <div class="edu-list" id="education"></div>
+      </section>
+
+    </div>
+
+    <footer class="foot">
+      <span data-lang="en">© 2026 Chong Ming Chen · Static résumé website</span>
+      <span data-lang="tw">© 2026 Chong Ming Chen 陳崇銘 · 本履歷以靜態網站呈現</span>
+      <span data-lang="cn">© 2026 Chong Ming Chen 陈崇铭 · 本简历以静态网站呈现</span>
+    </footer>
+  </main>
+
+<script>
+  /* ---------------- DATA (en / tw / cn) ---------------- */
+  const INTRO = [
+    {en:"<b>10+ years</b> of game development experience spanning client/PC games, web games, mobile and single-player titles.",
+     tw:"<b>10 年以上</b>豐富的遊戲開發經驗，從端遊、頁遊到手遊、單機遊戲全面涵蓋。",
+     cn:"<b>10 年以上</b>丰富的游戏开发经验，从端游、页游到手游、单机游戏全面涵盖。"},
+    {en:"Able to <b>build games independently</b>, with strong command of <b>Unity3D</b> and <b>Cocos Creator</b> for game client development.",
+     tw:"具備<b>獨立開發遊戲</b>的能力，熟練使用 <b>Unity3D</b>、<b>Cocos Creator</b> 進行遊戲客戶端開發。",
+     cn:"具备<b>独立开发游戏</b>的能力，熟练使用 <b>Unity3D</b>、<b>Cocos Creator</b> 进行游戏客户端开发。"},
+    {en:"<b>Full-stack</b> capability including game back-ends — proficient with <b>PHP</b> and <b>Node.js</b> for server-side systems.",
+     tw:"具備<b>全棧開發</b>與遊戲後端開發能力，熟練使用 <b>PHP</b>、<b>Node.js</b> 開發遊戲後端系統。",
+     cn:"具备<b>全栈开发</b>与游戏后端开发能力，熟练使用 <b>PHP</b>、<b>Node.js</b> 开发游戏后端系统。"},
+    {en:"Effective as a <b>team manager</b> — coordinating team growth and collaboration, owning technology selection and project architecture.",
+     tw:"勝任<b>團隊經理</b>角色，能協調整合團隊發展與協作任務，並完成技術選型與專案架構設計。",
+     cn:"胜任<b>团队经理</b>角色，能协调整合团队发展与协作任务，并完成技术选型与项目架构设计。"},
+    {en:"Lead R&D teams with a <b>product-driven</b> mindset, focused on delivery schedule and collaboration.",
+     tw:"以<b>產品驅動</b>的思維帶領研發團隊，專注於專案進度與團隊協作。",
+     cn:"以<b>产品驱动</b>的思维带领研发团队，专注于项目进度与团队协作。"},
+    {en:"Deep hands-on practice in <b>AI-assisted game R&D</b>: built in-house Context Engineering and team AI workflows, bringing AI collaboration into real production projects.",
+     tw:"深度實踐 <b>AI 輔助遊戲研發</b>：自建上下文工程（Context Engineering）與團隊 AI 工作流，將 AI 協作導入實際專案研發。",
+     cn:"深度实践 <b>AI 辅助游戏研发</b>：自建上下文工程（Context Engineering）与团队 AI 工作流，将 AI 协作导入实际项目研发。", ai:true},
+  ];
+
+  const SKILLS = [
+    {cat:{en:"Game Engine / Client",tw:"遊戲引擎 / 客戶端",cn:"游戏引擎 / 客户端"}, tags:["Unity3D","Cocos Creator","BigWorld","URP","NGUI","ILRuntime","AssetBundle"]},
+    {cat:{en:"Programming Languages",tw:"程式語言",cn:"编程语言"}, tags:["C#","C++","PHP","JavaScript","TypeScript","Python","Java"]},
+    {cat:{en:"Front-end / Back-end",tw:"前端 / 後端",cn:"前端 / 后端"}, tags:["Vue3","Ionic3","Node.js","Laravel","ThinkPHP","MySQL"]},
+    {cat:{en:"Cloud / DevOps",tw:"雲端 / DevOps",cn:"云端 / DevOps"}, tags:[{en:"Alibaba Cloud ECS/RDS/OSS/CDN",tw:"阿里雲 ECS/RDS/OSS/CDN",cn:"阿里云 ECS/RDS/OSS/CDN"},"AWS","Jenkins","Git","SVN","Steam / Steam Deck"]},
+    {cat:{en:"AI Engineering",tw:"AI 工程",cn:"AI 工程"}, ai:true, tags:["Claude Code","MCP","Context Engineering",{en:"Slash / Skill workflows",tw:"Slash / Skill 工作流",cn:"Slash / Skill 工作流"},"ComfyUI",{en:"Obsidian knowledge base",tw:"Obsidian 知識庫",cn:"Obsidian 知识库"}]},
+    {cat:{en:"Languages",tw:"語言",cn:"语言"}, tags:[{en:"Chinese (native / bilingual)",tw:"中文（母語 / 雙語）",cn:"中文（母语 / 双语）"}]},
+  ];
+
+  const EXPERIENCE = [
+    {
+      title:{en:"Technical Director",tw:"技術指導",cn:"技术指导"},
+      company:{en:"UserJoy Technology Co., Ltd.",tw:"宇峻奧汀股份有限公司",cn:"宇峻奥汀股份有限公司"},
+      period:{en:"Nov 2024 – Present",tw:"2024.11 ~ 至今",cn:"2024.11 ~ 至今"},
+      points:[
+        {en:"Lead core R&D and technical direction of a <b>single-player SRPG</b>: battlefield system architecture, enemy AI behavior, tool-chain (level/battle editors) and flow design.",
+         tw:"主導<b>單機戰棋（SRPG）</b>遊戲核心研發與技術，負責戰場系統架構、敵人 AI 行為、工具鏈（關卡/戰場編輯器）與流程設計。",
+         cn:"主导<b>单机战棋（SRPG）</b>游戏核心研发与技术，负责战场系统架构、敌人 AI 行为、工具链（关卡/战场编辑器）与流程设计。"},
+        {en:"Owned performance tuning, localization, save system and <b>Steam</b> platform integration; built a <b>Jenkins + Steam Deck</b> automated build & test pipeline.",
+         tw:"負責效能調優、本地化、存檔系統與 <b>Steam</b> 平台功能接入，建構 <b>Jenkins + Steam Deck</b> 自動化打包測試流程。",
+         cn:"负责性能调优、本地化、存档系统与 <b>Steam</b> 平台功能接入，搭建 <b>Jenkins + Steam Deck</b> 自动化打包测试流程。"},
+        {en:"Drove team-wide adoption of an <b>AI + Coding R&D model</b>: defined project specs and prompt standards, unified AI-collaboration code style/output, and governed AI scope via tiered permissions.",
+         tw:"主導團隊 <b>AI + Coding 研發模式</b>落地：制定專案規格與提示詞規範，統一 AI 協作的程式碼風格與產出標準，並以分級權限策略管控 AI 操作邊界。",
+         cn:"主导团队 <b>AI + Coding 研发模式</b>落地：制定项目规格与提示词规范，统一 AI 协作的代码风格与产出标准，并以分级权限策略管控 AI 操作边界。"},
+        {en:"Connected AI with the Unity Editor for debugging and automated testing via <b>MCP (Model Context Protocol)</b>.",
+         tw:"基於 <b>MCP（Model Context Protocol）</b>打通 AI 與 Unity Editor 的調試工程與自動化測試能力。",
+         cn:"基于 <b>MCP（Model Context Protocol）</b>打通 AI 与 Unity Editor 的调试工程与自动化测试能力。"},
+        {en:"Designed and maintained a <b>Context Engineering</b> system; built/extended Claude Code history-analysis tools to quantify token usage and context sources, optimizing collaboration efficiency.",
+         tw:"設計並維護<b>上下文工程</b>體系，自研 / 二次開發 Claude Code 歷史分析工具，量化 Token 用量與上下文來源分佈以優化協作效率。",
+         cn:"设计并维护<b>上下文工程</b>体系，自研 / 二次开发 Claude Code 历史分析工具，量化 Token 用量与上下文来源分布以优化协作效率。"},
+        {en:"Codified team AI workflows with custom <b>Slash commands & Skills</b> (code review, progress tracking, report generation, content-publishing pipeline); also built an Obsidian knowledge base and a ComfyUI test environment for TTS benchmarking.",
+         tw:"沉澱團隊 AI 工作流，編寫自訂 <b>Slash 指令與 Skill</b>（程式碼審查、進度維護、報告產生、內容發佈管線等），將重複研發動作標準化；並搭建 Obsidian 內部知識庫與 ComfyUI 測試環境（語音方案橫向評測）。",
+         cn:"沉淀团队 AI 工作流，编写自定义 <b>Slash 指令与 Skill</b>（代码审查、进度维护、报告生成、内容发布流水线等），将重复研发动作标准化；并搭建 Obsidian 内部知识库与 ComfyUI 测试环境（语音方案横向评测）。"},
+      ]
+    },
+    {
+      title:{en:"Technical Manager",tw:"技術經理",cn:"技术经理"},
+      company:{en:"Suzhou Daxiong Network Co., Ltd.",tw:"蘇州大熊網路有限公司",cn:"苏州大熊网络有限公司"},
+      period:{en:"Oct 2016 – Nov 2024",tw:"2016.10 ~ 2024.11",cn:"2016.10 ~ 2024.11"},
+      points:[
+        {en:"Built the <b>R&D department and tech team</b>: recruiting, training, interview design, headcount planning, and contributed to company technology strategy.",
+         tw:"負責<b>研發部門組建與技術團隊建設</b>：招募、培訓、面試考題制定、技術人員需求規劃，並參與制定公司技術戰略方案。",
+         cn:"负责<b>研发部门组建与技术团队建设</b>：招募、培训、面试考题制定、技术人员需求规划，并参与制定公司技术战略方案。"},
+        {en:"Owned tech planning for mahjong & app projects; developed the <b>mahjong game framework</b> and company platform systems.",
+         tw:"負責麻將、App 等項目技術規劃與設計，開發<b>麻將遊戲框架系統</b>與公司平台系統。",
+         cn:"负责麻将、App 等项目技术规划与设计，开发<b>麻将游戏框架系统</b>与公司平台系统。"},
+        {en:"Led <b>RummyGo</b> (Indian rummy, Unity3D + PHP) and <b>Suzhou Mahjong</b> (Cocos Creator + Node.js) to launch.",
+         tw:"主導 <b>RummyGo</b>（印度拉米，Unity3D + PHP）與<b>蘇州麻將</b>（Cocos Creator + Node.js）開發並上線。",
+         cn:"主导 <b>RummyGo</b>（印度拉米，Unity3D + PHP）与<b>苏州麻将</b>（Cocos Creator + Node.js）开发并上线。"},
+        {en:"Proficient with <b>Alibaba Cloud</b> (ECS/RDS/OSS/CDN) plus AWS; set up internal Jenkins auto-deploy (Ionic3 packaging), mantis, showdoc, svn/git.",
+         tw:"熟練使用<b>阿里雲</b>（ECS/RDS/OSS/CDN）並有 AWS 架設經驗；搭建內部 Jenkins 自動發佈系統（Ionic3 自動打包）、mantis、showdoc、svn/git。",
+         cn:"熟练使用<b>阿里云</b>（ECS/RDS/OSS/CDN）并有 AWS 架设经验；搭建内部 Jenkins 自动发布系统（Ionic3 自动打包）、mantis、showdoc、svn/git。"},
+        {en:"<b>Highlights:</b> delivered Suzhou Mahjong within one month using cocos-studio / C++ / Laravel; optimized servers to significantly cut cloud costs.",
+         tw:"<b>業績：</b>一個月內以 cocos-studio / C++ / Laravel 完成蘇州麻將；優化伺服器使用，顯著降低雲服務費用。",
+         cn:"<b>业绩：</b>一个月内以 cocos-studio / C++ / Laravel 完成苏州麻将；优化服务器使用，显著降低云服务费用。"},
+      ]
+    },
+    {
+      title:{en:"Lead Client Programmer",tw:"客戶端主程",cn:"客户端主程"},
+      company:{en:"Shanghai Leiren Network Technology",tw:"上海雷刃網絡科技有限公司",cn:"上海雷刃网络科技有限公司"},
+      period:{en:"Jun 2014 – Oct 2015",tw:"2014.06 ~ 2015.10",cn:"2014.06 ~ 2015.10"},
+      points:[
+        {en:"Built the client game framework with <b>Unity3D</b> and supported other client members on feature development.",
+         tw:"使用 <b>Unity3D</b> 搭建客戶端遊戲框架，協助其他客戶端成員進行遊戲功能開發。",
+         cn:"使用 <b>Unity3D</b> 搭建客户端游戏框架，协助其他客户端成员进行游戏功能开发。"},
+        {en:"Coordinated design requirements and system design; built the back-office in PHP and handled deployment.",
+         tw:"協調策劃需求並設計系統，使用 PHP 開發後台系統並搭建部署。",
+         cn:"协调策划需求并设计系统，使用 PHP 开发后台系统并搭建部署。"},
+        {en:"Planned schedules, tracked progress and resolved development blockers.",
+         tw:"規劃進度表並追蹤項目進度、排除開發問題。",
+         cn:"规划进度表并追踪项目进度、排除开发问题。"},
+      ]
+    },
+    {
+      title:{en:"Lead Client Programmer",tw:"客戶端主程",cn:"客户端主程"},
+      company:{en:"Leishen Digital Technology Co., Ltd.",tw:"雷神數位科技有限公司",cn:"雷神数位科技有限公司"},
+      period:{en:"Apr 2013 – May 2014",tw:"2013.04 ~ 2014.05",cn:"2013.04 ~ 2014.05"},
+      points:[
+        {en:"Handled internal tech recruiting, team building and project management with <b>Agile</b> (weekly planning/review, daily code review).",
+         tw:"負責公司內技術招募、團隊組建與專案管理，採<b>敏捷開發</b>（每週計畫 / 審查、每日 code review）。",
+         cn:"负责公司内技术招募、团队组建与项目管理，采<b>敏捷开发</b>（每周计划 / 审查、每日 code review）。"},
+        {en:"Developed mobile games (porting) in Unity3D and back-end services in PHP.",
+         tw:"使用 Unity3D 進行手機遊戲（移植）開發，使用 PHP 開發後端服務。",
+         cn:"使用 Unity3D 进行手机游戏（移植）开发，使用 PHP 开发后端服务。"},
+        {en:"Built a logging system to capture client errors; delivered client features, an automated build tool and performance optimization.",
+         tw:"搭建日誌系統捕捉客戶端錯誤；完成客戶端功能開發、自動化打包工具與效能優化。",
+         cn:"搭建日志系统捕捉客户端错误；完成客户端功能开发、自动化打包工具与性能优化。"},
+      ]
+    },
+    {
+      title:{en:"Lead Client Programmer",tw:"客戶端主程",cn:"客户端主程"},
+      company:{en:"UserJoy Technology Co., Ltd.",tw:"宇峻奧汀科技股份有限公司",cn:"宇峻奥汀科技股份有限公司"},
+      period:{en:"Oct 2008 – Apr 2013",tw:"2008.10 ~ 2013.04",cn:"2008.10 ~ 2013.04"},
+      points:[
+        {en:"Developed and maintained <b>MMO client UI</b> components; built game UI on the <b>BigWorld</b> engine using <b>Python and C++</b>.",
+         tw:"負責 <b>MMO 項目客戶端 UI</b> 組件開發與維護，使用 <b>Python 與 C++</b> 開發基於 <b>BigWorld</b> 引擎的遊戲 UI 介面。",
+         cn:"负责 <b>MMO 项目客户端 UI</b> 组件开发与维护，使用 <b>Python 与 C++</b> 开发基于 <b>BigWorld</b> 引擎的游戏 UI 界面。"},
+        {en:"Led members building Unity web games; created a Unity game framework (XML importer, NGUI workflow, AssetBundle loader).",
+         tw:"帶領成員開發 Unity 網頁遊戲，開發 Unity 遊戲框架（XML 導入器、NGUI 製作流程、AssetBundle 載入器）。",
+         cn:"带领成员开发 Unity 网页游戏，开发 Unity 游戏框架（XML 导入器、NGUI 制作流程、AssetBundle 加载器）。"},
+        {en:"Built UI Batch Render and skill-CD shaders; optimized memory usage and UI performance.",
+         tw:"開發 UI Batch Render 與技能 CD Shader，優化記憶體使用與介面效能。",
+         cn:"开发 UI Batch Render 与技能 CD Shader，优化内存使用与界面性能。"},
+      ]
+    },
+  ];
+
+  const PROJECTS = [
+    {
+      name:{en:"Bomberman-style Game",tw:"轟炸超人",cn:"轰炸超人"}, role:{en:"Game Developer",tw:"Game Developer",cn:"Game Developer"},
+      period:{en:"Jan 2023 – Present",tw:"2023.01 ~ 至今",cn:"2023.01 ~ 至今"},
+      desc:{en:"Owned tech selection and core R&D: game logic, <b>frame-sync</b> netcode, performance & latency optimization, packet optimization; in-house map/action editors and Excel + AssetBundle build tools; URP scene effects with three-platform packaging.",
+            tw:"負責技術選型與核心研發：開發遊戲邏輯、<b>幀同步</b>技術、效能與網絡延遲優化、封包優化；自製地圖編輯器、動作編輯器、Excel 與 AssetBundle 打包工具；URP 場景效果，三端打包。",
+            cn:"负责技术选型与核心研发：开发游戏逻辑、<b>帧同步</b>技术、性能与网络延迟优化、封包优化；自制地图编辑器、动作编辑器、Excel 与 AssetBundle 打包工具；URP 场景效果，三端打包。"},
+      tags:["Unity 2021","C#","PHP","ILRuntime","URP","PC/Android/iOS"]
+    },
+    {
+      name:{en:"RummyGo",tw:"RummyGo",cn:"RummyGo"}, role:{en:"Lead Programmer",tw:"項目主程",cn:"项目主程"},
+      period:{en:"Oct 2020 – Present",tw:"2020.10 ~ 至今",cn:"2020.10 ~ 至今"},
+      desc:{en:"A card game combining Rummy / Poker / Patti, targeting <b>overseas markets</b>. Owned overall architecture, copywriting and numeric design, plus overseas marketing and dual-store submission.",
+            tw:"結合 Rummy / Poker / Patti 三種玩法、面向<b>海外市場</b>的棋牌遊戲。負責整體架構、文案與數值設計，並主導海外推廣與雙平台送審上架。",
+            cn:"结合 Rummy / Poker / Patti 三种玩法、面向<b>海外市场</b>的棋牌游戏。负责整体架构、文案与数值设计，并主导海外推广与双平台送审上架。"},
+      tags:["Unity 2020","Node.js","PHP",{en:"Going global",tw:"出海",cn:"出海"},"GP / App Store"],
+      win:{en:"Live on Google Play; Apple Store in review",tw:"Google Play 已上架，Apple Store 送審中",cn:"Google Play 已上架，Apple Store 送审中"}
+    },
+    {
+      name:{en:"Daxiong Suzhou Mahjong",tw:"大熊蘇州麻將",cn:"大熊苏州麻将"}, role:{en:"Technical Manager",tw:"技術經理",cn:"技术经理"},
+      period:{en:"Oct 2016 – Aug 2024",tw:"2016.10 ~ 2024.08",cn:"2016.10 ~ 2024.08"},
+      desc:{en:"Independently built a teahouse management system and mahjong client: Cocos Creator client, Laravel / ThinkPHP3 back-office, VC11 server; in-house DDoS protection and gold-room bot win/loss tuning.",
+            tw:"獨立開發茶館管理系統與麻將客戶端：Cocos Creator 客戶端、Laravel / ThinkPHP3 後台、VC11 服務端；自研 DDOS 防護與金幣場機器人輸贏水位設計。",
+            cn:"独立开发茶馆管理系统与麻将客户端：Cocos Creator 客户端、Laravel / ThinkPHP3 后台、VC11 服务端；自研 DDOS 防护与金币场机器人输赢水位设计。"},
+      tags:["Cocos Creator","Laravel","ThinkPHP3","C++"],
+      win:{en:"Launched in 2 months; up to 1,000 concurrent players; first local teahouse system in Suzhou",tw:"2 個月內上線，同時在線達千人；蘇州本地首家茶館系統",cn:"2 个月内上线，同时在线达千人；苏州本地首家茶馆系统"}
+    },
+    {
+      name:{en:"Hundou Sanguo (ARPG)",tw:"魂斗三國",cn:"魂斗三国"}, role:{en:"Lead Programmer",tw:"主程序",cn:"主程序"},
+      period:{en:"Jun 2014 – Nov 2015",tw:"2014.06 ~ 2015.11",cn:"2014.06 ~ 2015.11"},
+      desc:{en:"A mobile ARPG (comparable to Taichi Panda). Handled Android hot-update and iOS resource updates; built scene switching, resource management, monster spawning, AI modes, combat and dungeon systems with multiple third-party SDKs.",
+            tw:"ARPG 手遊（性質近似太極熊貓）。處理 Android 熱更新與 iOS 資源更新；完成場景切換、資源管理、怪物生成、AI 模式、戰鬥動作與副本系統，整合多種第三方 SDK。",
+            cn:"ARPG 手游（性质近似太极熊猫）。处理 Android 热更新与 iOS 资源更新；完成场景切换、资源管理、怪物生成、AI 模式、战斗动作与副本系统，整合多种第三方 SDK。"},
+      tags:["Unity3D",{en:"Hot-update",tw:"熱更新",cn:"热更新"},"Fmod","Talking Data","VTC SDK"]
+    },
+    {
+      name:{en:"Legend of Camelot",tw:"卡米洛傳說",cn:"卡米洛传说"}, role:{en:"Lead Programmer",tw:"主程式",cn:"主程式"},
+      period:{en:"Apr 2013 – May 2014",tw:"2013.04 ~ 2014.05",cn:"2013.04 ~ 2014.05"},
+      desc:{en:"Porting of the web game “Cute Knights” to handheld devices. Built IAP in-app payment, on-demand texture download, AssetBundle load/release, WebView, obfuscation and automated packaging.",
+            tw:"網頁遊戲「萌騎士」移植手持裝置專案。開發 IAP 應用內金流、貼圖即時下載、AssetBundle 資源載入 / 釋放機制、WebView、加密混淆與自動化打包。",
+            cn:"网页游戏「萌骑士」移植手持装置项目。开发 IAP 应用内金流、贴图即时下载、AssetBundle 资源加载 / 释放机制、WebView、加密混淆与自动化打包。"},
+      tags:["Unity3D","NGUI","IAP","AssetBundle"]
+    },
+    {
+      name:{en:"Kingdom Knights",tw:"王國騎士團",cn:"王国骑士团"}, role:{en:"Lead Programmer",tw:"主程序",cn:"主程序"},
+      period:{en:"Sep 2011 – Apr 2013",tw:"2011.09 ~ 2013.04",cn:"2011.09 ~ 2013.04"},
+      desc:{en:"The company’s <b>first Unity3D</b> project, a Facebook web game. Broke from traditional 2.5D scenes to a spherical map with hex-grid layout for strategy management gameplay; built an Excel→ScriptableObject pipeline and NGUI dependency packaging.",
+            tw:"公司內<b>第一款 Unity3D</b> 專案、發佈於 FB 的頁遊。突破傳統 2.5D 場景，改用球體場景與六方格佈局的策略經營玩法；自研 Excel→ScriptableObject 轉換流程與 NGUI 依賴打包。",
+            cn:"公司内<b>第一款 Unity3D</b> 项目、发布于 FB 的页游。突破传统 2.5D 场景，改用球体场景与六方格布局的策略经营玩法；自研 Excel→ScriptableObject 转换流程与 NGUI 依赖打包。"},
+      tags:["Unity3D","NGUI","Facebook","ScriptableObject"]
+    },
+    {
+      name:{en:"Mengu Empire",tw:"萌谷帝國",cn:"萌谷帝国"}, role:{en:"Game Programmer",tw:"遊戲程序",cn:"游戏程序"},
+      period:{en:"Jan 2010 – Sep 2011",tw:"2010.01 ~ 2011.09",cn:"2010.01 ~ 2011.09"},
+      desc:{en:"A remake extending Fire Phoenix Three Kingdoms with a guild-focused system. Reduced draw calls via dynamic texture merging; built skill-CD shaders and minimap mipmaps to optimize client UI performance.",
+            tw:"火鳳三國再製品，重點延伸工會系統。使用動態合併貼圖減少 draw call，開發技能 CD Shader 與小地圖 mipmap，優化客戶端介面效能。",
+            cn:"火凤三国再制品，重点延伸工会系统。使用动态合并贴图减少 draw call，开发技能 CD Shader 与小地图 mipmap，优化客户端界面性能。"},
+      tags:["BigWorld","Shader",{en:"Perf optimization",tw:"效能優化",cn:"性能优化"}],
+      win:{en:"Reached tens-of-millions profit in its first year",tw:"上線一年利潤達千萬級別",cn:"上线一年利润达千万级别"}
+    },
+    {
+      name:{en:"Fire Phoenix Three Kingdoms Online",tw:"火鳳三國 Online",cn:"火凤三国 Online"}, role:{en:"Game Programmer",tw:"遊戲程序",cn:"游戏程序"},
+      period:{en:"Oct 2008 – Jan 2010",tw:"2008.10 ~ 2010.01",cn:"2008.10 ~ 2010.01"},
+      desc:{en:"The division’s first <b>BigWorld MMORPG client/PC game</b>, featuring on-the-fly transformation combat across the world map — the first 3D transformation MMORPG of its time. Built UI programming and many interface systems, using batching rendering to boost performance.",
+            tw:"宇峻奧汀第三事業處第一款 <b>BigWorld MMORPG 端遊</b>，主打世界地圖隨時變身戰鬥，為當時首款 3D 變身 MMORPG。負責介面程式與多項界面系統，並以 batching rendering 提升效能。",
+            cn:"宇峻奥汀第三事业处第一款 <b>BigWorld MMORPG 端游</b>，主打世界地图随时变身战斗，为当时首款 3D 变身 MMORPG。负责界面程序与多项界面系统，并以 batching rendering 提升性能。"},
+      tags:["BigWorld","C++","MMORPG"],
+      win:{en:"Reached tens-of-millions profit ~3 months after launch",tw:"上線約 3 個月利潤達千萬級別",cn:"上线约 3 个月利润达千万级别"}
+    },
+  ];
+
+  const EDUCATION = [
+    {school:{en:"National Taiwan University of Science and Technology",tw:"國立臺灣科技大學",cn:"国立台湾科技大学"}, deg:{en:"Master",tw:"碩士",cn:"硕士"}, major:{en:"Game Software / Mechanical Eng.",tw:"遊戲軟體 / 機械",cn:"游戏软件 / 机械"}, yr:"2005 – 2007"},
+    {school:{en:"National Taiwan Ocean University",tw:"國立海洋大學",cn:"国立海洋大学"}, deg:{en:"Bachelor",tw:"學士",cn:"学士"}, major:{en:"Marine Engineering",tw:"船舶輪機系",cn:"船舶轮机系"}, yr:"2003 – 2005"},
+    {school:{en:"National Formosa University",tw:"國立虎尾科技大學",cn:"国立虎尾科技大学"}, deg:{en:"Diploma",tw:"專科",cn:"专科"}, major:{en:"Drafting",tw:"製圖科",cn:"制图科"}, yr:"1998 – 2003"},
+  ];
+
+  /* ---------------- RENDER ---------------- */
+  function curLang(){ const l=document.documentElement.lang; return l==="en"?"en":(l==="zh-Hans"?"cn":"tw"); }
+  function L(o){ if(o&&typeof o==="object"&&!Array.isArray(o)&&("tw"in o||"en"in o)){ const k=curLang(); return o[k]!=null?o[k]:(o.en||o.tw); } return o; }
+
+  function render(){
+    document.getElementById("intro").innerHTML = INTRO.map(i=>
+      `<li class="${i.ai?"ai":""}">${L(i)}</li>`).join("");
+
+    document.getElementById("skills").innerHTML = SKILLS.map(s=>`
+      <div class="skill-row">
+        <div class="skill-cat">${L(s.cat)}</div>
+        <div class="tags">${s.tags.map(t=>`<span class="tag">${L(t)}</span>`).join("")}</div>
+      </div>`).join("");
+
+    document.getElementById("experience").innerHTML = EXPERIENCE.map(j=>`
+      <div class="job">
+        <div class="job-head">
+          <div class="job-title">${L(j.title)}</div>
+          <div class="job-period">${L(j.period)}</div>
+        </div>
+        <div class="job-company">${L(j.company)}</div>
+        <ul>${j.points.map(p=>`<li>${L(p)}</li>`).join("")}</ul>
+      </div>`).join("");
+
+    document.getElementById("projects").innerHTML = PROJECTS.map(p=>`
+      <div class="proj">
+        <div class="proj-head">
+          <span class="proj-name">${L(p.name)}</span>
+          <span class="proj-role">${L(p.role)}</span>
+        </div>
+        <div class="proj-period">${L(p.period)}</div>
+        <div class="proj-desc">${L(p.desc)}</div>
+        <div class="proj-tags">${p.tags.map(t=>`<span class="t">${L(t)}</span>`).join("")}</div>
+        ${p.win?`<div class="proj-win">${L(p.win)}</div>`:""}
+      </div>`).join("");
+
+    document.getElementById("education").innerHTML = EDUCATION.map(e=>`
+      <div class="edu">
+        <div><span class="school">${L(e.school)}</span><span class="deg">${L(e.deg)}</span><span class="major">${L(e.major)}</span></div>
+        <div class="yr">${e.yr}</div>
+      </div>`).join("");
+  }
+
+  const TITLES = {
+    en:"Chong Ming Chen — Senior Game Developer / Tech Lead (Unity3D)",
+    "zh-Hant":"Chong Ming Chen 陳崇銘 — 資深遊戲開發 / 技術主管 (Unity3D)",
+    "zh-Hans":"Chong Ming Chen 陈崇铭 — 资深游戏开发 / 技术主管 (Unity3D)"
+  };
+
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang] || TITLES.en;
+    document.getElementById("btn-en").classList.toggle("active", lang==="en");
+    document.getElementById("btn-tw").classList.toggle("active", lang==="zh-Hant");
+    document.getElementById("btn-cn").classList.toggle("active", lang==="zh-Hans");
+    try{ localStorage.setItem("resume-lang", lang); }catch(e){}
+    render();
+  }
+
+  function detectLang(){
+    const list = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || "en"];
+    for(const raw of list){
+      const l = (raw||"").toLowerCase();
+      if(l.startsWith("zh")){
+        if(l.includes("tw")||l.includes("hk")||l.includes("mo")||l.includes("hant")) return "zh-Hant";
+        return "zh-Hans";
+      }
+      if(l.startsWith("en")) return "en";
+    }
+    return "en";
+  }
+
+  let chosen;
+  try{ chosen = localStorage.getItem("resume-lang"); }catch(e){}
+  if(!["en","zh-Hant","zh-Hans"].includes(chosen)) chosen = detectLang();
+  setLang(chosen);
+</script>
+</body>
+</html>
