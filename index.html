@@ -91,18 +91,20 @@
   .job li{position:relative;padding-left:16px;color:var(--text);font-size:14px}
   .job li::before{content:"–";position:absolute;left:0;color:var(--muted)}
 
-  .projects{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .proj{background:var(--card);padding:16px 18px;display:flex;flex-direction:column}
-  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
-  .proj-name{font-weight:600;font-size:15px;color:var(--ink)}
-  .proj-role{font-size:12px;color:var(--muted)}
-  .proj-period{font-size:12px;color:var(--muted);margin-top:2px}
-  .proj-points{list-style:none;margin:10px 0 12px;flex:1;display:flex;flex-direction:column;gap:5px}
-  .proj-points li{position:relative;padding-left:15px;font-size:13.5px;color:var(--soft);line-height:1.65}
+  .projects{display:flex;flex-direction:column;gap:24px}
+  .proj{position:relative;padding-left:20px;border-left:1px solid var(--line)}
+  .proj::before{content:"";position:absolute;left:-4px;top:7px;width:7px;height:7px;border-radius:50%;background:var(--muted)}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px;flex-wrap:wrap}
+  .proj-titlewrap{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .proj-name{font-weight:600;font-size:15.5px;color:var(--ink)}
+  .proj-role{font-size:13px;color:var(--soft)}
+  .proj-period{font-size:12.5px;color:var(--muted)}
+  .proj-points{list-style:none;margin:9px 0 11px;display:flex;flex-direction:column;gap:6px}
+  .proj-points li{position:relative;padding-left:16px;font-size:14px;color:var(--text);line-height:1.7}
   .proj-points li::before{content:"–";position:absolute;left:0;color:var(--muted)}
   .proj-tags{display:flex;flex-wrap:wrap;gap:6px}
   .proj-tags .t{font-size:11.5px;color:var(--tag-ink);background:var(--tag-bg);border:1px solid var(--line);padding:1px 8px;border-radius:5px}
-  .proj-win{font-size:12.5px;color:var(--soft);margin-top:10px;padding-top:9px;border-top:1px solid var(--line-soft)}
+  .proj-win{font-size:13px;color:var(--soft);margin-top:11px;padding-top:9px;border-top:1px solid var(--line-soft)}
 
   .edu-list{display:flex;flex-direction:column}
   .edu{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;padding:12px 0;border-bottom:1px solid var(--line-soft)}
@@ -124,7 +126,6 @@
     header.hero{padding:32px 22px 26px}
     .content{padding:28px 20px 34px}
     .skill-row{grid-template-columns:1fr;gap:6px}
-    .projects{grid-template-columns:1fr}
   }
   @media print{
     body{background:#fff;padding:0;font-size:12pt}
